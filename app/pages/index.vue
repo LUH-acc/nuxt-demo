@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const title = ref('Hello World from index.vue')
-const testData = useAppConfig().testData
+const appConfig = useAppConfig()
+const testData = appConfig.testData
+const someAppConfig = useAppConfig().someAppConfig
 const runtimeConfig = useRuntimeConfig()
 definePageMeta({
   title: 'index page',
@@ -10,7 +12,8 @@ definePageMeta({
 <template>
   <div>
     <pre>myEnvVariable:{{ runtimeConfig.public.apiSecretToken }}</pre>
-    <h2 :style="{ color: testData.color }">{{ title }}</h2>
+    <h2 :style="{ color: testData.color }">{{ title }} {{ appConfig.foo }}</h2>
+    <pre>someAppConfig:{{ someAppConfig }}</pre>
     <div>{{ $route.meta.title }}</div>
     <NuxtLink to="/changeLayout">Go to changeLayout</NuxtLink>
     <NuxtLink to="/test.middleRouter?name=test">Go to test.middleRouter</NuxtLink>
@@ -36,5 +39,7 @@ definePageMeta({
     <NuxtLink to="/useAppConfig">Go to useAppConfig</NuxtLink>
     <br>
     <NuxtLink to="/serverData">Go to serverData</NuxtLink>
+    <br>
+    <NuxtLink to="/toolsPage">Go to toolsPage</NuxtLink>
   </div>
 </template>

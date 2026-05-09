@@ -9,7 +9,8 @@
     "generate": "nuxt generate --dotenv .env.development",
     "generate:prod": "nuxt generate --dotenv .env.production",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "cleanup": "nuxt cleanup"
   },
   "dependencies": {
     "nuxt": "^4.4.4",
