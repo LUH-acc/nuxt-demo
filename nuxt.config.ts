@@ -23,5 +23,12 @@ export default defineNuxtConfig({
   },
   vite: {
     
-  }
+  },
+  modules: [
+    '@unocss/nuxt',
+  ],
+  css: [
+    '@unocss/reset/tailwind-compat.css',
+    '~/assets/style/index.css',
+  ]
 })

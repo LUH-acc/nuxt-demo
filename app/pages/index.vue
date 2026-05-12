@@ -10,7 +10,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div>
+  <!-- <div>
     <pre>myEnvVariable:{{ runtimeConfig.public.apiSecretToken }}</pre>
     <h2 :style="{ color: testData.color }">{{ title }} {{ appConfig.foo }}</h2>
     <pre>someAppConfig:{{ someAppConfig }}</pre>
@@ -41,5 +41,8 @@ definePageMeta({
     <NuxtLink to="/serverData">Go to serverData</NuxtLink>
     <br>
     <NuxtLink to="/toolsPage">Go to toolsPage</NuxtLink>
-  </div>
+    <br>
+    <NuxtLink to="/stylePage">Go to stylePage</NuxtLink>
+  </div> -->
+  <home-page />
 </template>

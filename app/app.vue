@@ -1,8 +1,8 @@
 <template>
   <NuxtLayout>
-    <!-- <template #header>
+    <!-- <template #header> -->
       <appHeader />
-    </template> -->
+    <!-- </template> -->
     <NuxtPage />
     <!-- <template #footer>
       <appFooter />

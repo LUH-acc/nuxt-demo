@@ -6,7 +6,7 @@ const headerTitle = ref('Hello World from layouts header')
     <div>
       <header>
         <slot name="header">
-          <h1>{{ headerTitle }}</h1>
+          <!-- <h1>{{ headerTitle }}</h1> -->
         </slot>
       </header>
       <main>
