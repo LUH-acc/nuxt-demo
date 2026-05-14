@@ -45,7 +45,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="relative py-15 h-full">
+    <div class="relative py-15 h-full overflow-hidden">
         <div class="w-full mx-auto absolute z-0 top-0 left-0 right-0 h-full">
             <img src="~/assets/images/home-page/browser-bg.png" alt="browser-bg" class="w-full h-full">
         </div>

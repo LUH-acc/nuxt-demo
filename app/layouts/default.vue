@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const headerTitle = ref('Hello World from layouts header')
+const testProps = ref('testProps')
 </script>
 
 <template>
@@ -12,8 +13,8 @@ const headerTitle = ref('Hello World from layouts header')
       <main>
         <slot />
       </main>
-      <footer>
-        <slot name="footer">
+      <footer class="mt-10">
+        <slot name="footer" :testProps="testProps">
         </slot>
       </footer>
     </div>

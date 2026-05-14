@@ -11,15 +11,23 @@ import {
   } from 'unocss'
   
   export default defineConfig({
-    shortcuts: [
-      // ...
-    ],
+    shortcuts: {
+      // 方式 A：用 theme 里的 font-archivo（推荐，见下方 theme.fontFamily）
+      'rx-h2':
+        'font-archivo font-bold text-black text-[24px] min-[641px]:text-[48px]',
+      'rx-p': 'font-inter text-[#042144] mt-2',
+      'wh-full': 'w-full h-full',
+    },
     rules: [
         [/^m-([\.\d]+)$/, ([_, num]) => ({ margin: `${num}px` })],
     ],
     theme: {
       colors: {
         // ...
+      },
+      fontFamily: {
+        archivo: 'var(--font-Archivo-family), system-ui, sans-serif',
+        inter: 'var(--font-Inter-family), system-ui, sans-serif',
       },
       breakpoints: {
         xs: '320px',

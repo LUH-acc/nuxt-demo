@@ -1,5 +1,18 @@
 <script setup lang="ts">
+import NavProvide from './home-page/nav-provide.vue';
+
 const headerList = useHeader()
+const show = ref(false)
+const showNavProvide = ref(true)
+const handleMouseEnter = () => {
+  console.log('handleMouseEnter');
+  
+  showNavProvide.value = true
+}
+const handleMouseLeave = () => {
+  console.log('handleMouseLeave');
+  showNavProvide.value = false
+}
 </script>
 
 <template>
@@ -14,12 +27,20 @@ const headerList = useHeader()
       </div>
       <div class="hidden gap-3 ml-4 md:flex">
         <div v-for="item in headerList" :key="item.title" class="py-1.5 px-3  hover:bg-white/30 rounded-md">
-          <NuxtLink :to="item.href">{{ item.title }}</NuxtLink>
+          <NavProvide>
+            <template #reference>
+              <NuxtLink>{{ item.title }}</NuxtLink>
+            </template>
+          </NavProvide>
         </div>
       </div>
       <div class="ml-auto">
-        <NuxtLink to="/login" class="py-1.5 px-3  hover:bg-white/30 rounded-md">Login</NuxtLink>
+        <NuxtLink class="py-1.5 px-3  hover:bg-white/30 rounded-md" @click="show = !show">Login</NuxtLink>
       </div>
     </div>
   </div>
+  <TeleportOverlay v-model="show" :close-on-backdrop-only="false">
+    <p>hello</p>
+  </TeleportOverlay>
+  
 </template>

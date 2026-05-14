@@ -17,6 +17,17 @@ export default defineNuxtConfig({
       apiSecretToken: process.env.NUXT_API_SECRET,
     },
   },
+  routeRules: {
+    '/': {
+      ssr: true,
+    },
+    '/changeLayout': {
+      ssr: false
+    },
+    '/toolsPage': {
+      ssr: false
+    },
+  },
   devServer: {
     port: 3000,
     host: '0.0.0.0',

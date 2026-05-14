@@ -6,7 +6,7 @@ import Companys from './components/companys.vue'
 </script>
 
 <template>
-    <div class="overflow-hidden relative">
+    <div>
         <Agent />
         <Browser />
         <Account />
