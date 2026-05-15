@@ -7,7 +7,7 @@ type HeaderItem = {
 
 export default function useHeader() {
     const headerList = reactive<HeaderItem[]>([
-        { title: '应用场景', href: '/use-cases', mega: true },
+        { title: '应用场景', href: '/usesPage', mega: true },
         { title: '产品功能', href: '/function' },
         { title: '资源', href: '/resources' },
         { title: '价格方案', href: '/pricing' },

@@ -17,11 +17,18 @@ import {
         'font-archivo font-bold text-black text-[24px] min-[641px]:text-[48px]',
       'rx-p': 'font-inter text-[#042144] mt-2',
       'wh-full': 'w-full h-full',
+      'text-h3': 'font-archivo font-bold text-[40px]',
+      'text-p': 'font-inter text-[#575D60] font-size-[18px] font-weight-400',
+      'test-container': 'lg:max-w-[1280px] mx-auto px-4',
     },
     rules: [
         [/^m-([\.\d]+)$/, ([_, num]) => ({ margin: `${num}px` })],
     ],
     theme: {
+      fontSize: {
+        h3: ['40px', { fontWeight: 'bold', fontFamily: 'var(--font-Archivo-family), system-ui, sans-serif' }],
+        
+      },
       colors: {
         // ...
       },

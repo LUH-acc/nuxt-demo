@@ -2,11 +2,18 @@
 </script>
 
 <template>
-    <div class="text-black md:w-[1280px] mx-auto xs:px-4 ">
-        <h2 class="font-family-archivo-bold mt-20">All-in-One Account Management</h2>
-        <div class="font-weight-400 text-[#042144] mt-2">Keep up with RoxyBrowser's latest research and exclusive insights on secure multi-account management</div>
-        <div class="mt-10 grid grid-cols-3 gap-x-4 gap-y-8 md:grid-cols-5 md:gap-x-8 md:gap-y-10 justify-items-center">
-            <div v-for="company in companys" :key="company.name" class="w-[100px] h-[50px] md:w-[226px] md:h-[124px] bg-white rounded-2xl flex items-center justify-center">
+    <div class="text-black mx-auto test-container">
+        <h2 class="font-archivo mt-20 text-[24px] font-bold lg:text-[48px]">All-in-One Account Management</h2>
+        <div class="font-weight-400 mt-2 w-full text-[#042144]">
+            Keep up with RoxyBrowser's latest research and exclusive insights on secure multi-account management
+        </div>
+        <div class="mt-10 grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5">
+            <div
+                v-for="(company, i) in companys"
+                :key="company.name"
+                class="flex h-[50px] w-full items-center justify-center rounded-2xl bg-white lg:h-[124px]"
+                :class="{ 'max-md:hidden': i >= companys.length - 2 }"
+            >
                 {{ company.name }}
             </div>
         </div>

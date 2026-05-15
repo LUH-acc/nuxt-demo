@@ -112,6 +112,7 @@ onUnmounted(() => {
     <!-- 整颗触发器宽度：供 getBoundingClientRect 计算居中与边界 -->
     <div ref="anchorRef" class="relative inline-block max-w-full align-middle">
         <div
+        class="w-full"
             @mouseenter="handleMouseEnter"
             @mouseleave="handleMouseLeave"
         >

@@ -4,7 +4,7 @@ const testProps = ref('testProps')
 </script>
 
 <template>
-    <div>
+    <div class="bg-[linear-gradient(180deg,#F3F4F7_0%,#FFFFFF_110%)]">
       <header>
         <slot name="header">
           <!-- <h1>{{ headerTitle }}</h1> -->
