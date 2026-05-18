@@ -4,6 +4,7 @@ import Browser from './components/browser.vue'
 import Account from './components/account.vue'
 import Companys from './components/companys.vue'
 import Faqs from './components/faqs.vue'
+import Community from './components/community.vue'
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import Faqs from './components/faqs.vue'
         <Browser />
         <Account />
         <Companys />
+        <Community />
         <Faqs />
     </div>
 </template>

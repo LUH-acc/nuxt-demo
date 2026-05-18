@@ -82,7 +82,8 @@ const handleMouseLeave = () => {
 </script>
 
 <template>
-  <div class="max-w-[375px] xs:max-w-[640px] md:max-w-[1320px] mx-auto fixed top-0 left-0 right-0 z-100 px-4">
+  <div
+    class="max-w-[375px] xs:max-w-[640px] text-white md:max-w-[1320px] mx-auto fixed top-0 left-0 right-0 z-100 px-4">
     <div class="bg-[#0C1A31]/20 backdrop-blur-md rounded-3">
       <div class="relative flex w-full items-center  py-1.5 px-2  mt-3" :class="menuShow ? 'rounded-b-none' : ''">
         <div class="flex items-center gap-2">
@@ -110,11 +111,11 @@ const handleMouseLeave = () => {
       </div>
       <!-- 移动端nav -->
       <Transition name="mobile-menu">
-        <div v-show="menuShow" class="md:hidden px-4">
-          <div>
-            <div>
-              <ul class="flex flex-col gap-2">
-                <li v-for="item in mobileHeaderList" :key="item.title" class="border-b-1 border-b-gray-500 py-4 mx-4">
+        <div v-show="menuShow" class="md:hidden px-4 max-h-[calc(100dvh-124px)] relative overflow-y-auto">
+          <div class="h-[calc(100dvh-124px-62px)] overflow-y-auto flex flex-col justify-between">
+            <div class="flex-1 overflow-y-auto">
+              <ul class="flex flex-col gap-2 ">
+                <li v-for="item in mobileHeaderList" :key="item.title" class="border-b-1 last:border-b-0 border-b-white/20 py-4 mx-4">
                   <div class="flex justify-between items-center ">
                     <div class="font-archivo font-weight-500 font-size-[16px]">{{ item.title }}</div>
                     <div @click="item.show = !item.show">open</div>
@@ -131,6 +132,10 @@ const handleMouseLeave = () => {
                   </AnimatePresence>
                 </li>
               </ul>
+            </div>
+            <div class="grid grid-cols-2 gap-2 mb-4 font-weight-500 font-size-[14px]">
+              <div class="py-3 border-1  border-white/30 rounded-[8px]">login</div>
+              <div class="py-3 bg-[#12A3FC] rounded-[8px]">register</div>
             </div>
           </div>
         </div>

@@ -77,7 +77,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="relative py-15 h-full overflow-hidden">
+    <div class="relative py-15 h-full overflow-hidden text-white">
         <div class="w-full mx-auto absolute z-0 top-0 left-0 right-0 h-full">
             <img src="~/assets/images/home-page/browser-bg.png" alt="browser-bg" class="w-full h-full">
         </div>
@@ -166,16 +166,16 @@ onUnmounted(() => {
                         rutrum, ante odio fringilla urna</div>
 
                     <div
-                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-between flex-wrap md:mt-20">
-                        <div class="flex flex-col mt-10">
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-between flex-wrap mt-20">
+                        <div class="flex flex-col mt-5">
                             <span class="text1-title">Hours served</span>
                             <span class="text1">2,348,394</span>
                         </div>
-                        <div class="flex flex-col mt-10">
+                        <div class="flex flex-col mt-5">
                             <span class="text1-title">Profiles protected</span>
                             <span class="text1">122,348,394</span>
                         </div>
-                        <div class="flex flex-col mt-10">
+                        <div class="flex flex-col mt-5">
                             <span class="text1-title">Latest visited</span>
                             <span class="text1">London,UK</span>
                         </div>
