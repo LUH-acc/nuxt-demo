@@ -81,38 +81,37 @@ const tick2 = () => {
         rafId2 = requestAnimationFrame(tick2)
         return
     }
-    const { scrollWidth, clientWidth, scrollLeft, scrollRight } = communityListRef2.value
-    console.log(scrollRight)
+    const { scrollWidth, clientWidth, scrollLeft } = communityListRef2.value
     if (scrollWidth <= clientWidth + 1) {
         rafId2 = requestAnimationFrame(tick2)
         return
     }
     const half = scrollWidth / 2
     let next = scrollLeft - SPEED
-    if (next <= 0) next += scrollWidth
+    if (next <= 0) next += half
     communityListRef2.value.scrollLeft = next
     rafId2 = requestAnimationFrame(tick2)
 }
 
 function startMarquee() {
-    // rafId = requestAnimationFrame(tick)
+    rafId = requestAnimationFrame(tick)
     if (communityListRef2.value) {
         const { scrollWidth } = communityListRef2.value
-        communityListRef2.value.scrollLeft = scrollWidth / 2 || 0
+        // communityListRef2.value.scrollLeft = scrollWidth / 2 || 0
     }
-    // rafId2 = requestAnimationFrame(tick2)
+    rafId2 = requestAnimationFrame(tick2)
 }
 
 onMounted(() => {
-    startMarquee()
+    // startMarquee()
 })
 onUnmounted(() => {
     cancelAnimationFrame(rafId)
     cancelAnimationFrame(rafId2)
 })
 const handleMouseEnter = () => {
-    cancelAnimationFrame(rafId)
-    cancelAnimationFrame(rafId2)
+    // cancelAnimationFrame(rafId)
+    // cancelAnimationFrame(rafId2)
 }
 const handleMouseLeave = () => {
     // initMarqueeScroll(communityListRef2.value, 'reverse')
@@ -122,39 +121,17 @@ const handleMouseLeave = () => {
 </script>
 
 <template>
-    <div>
-        <h2 class="mt-10 font-archivo font-weight-700 font-bold text-[24px] lg:text-[48px]">Trusted by Community</h2>
-    </div>
-    <div class="w-full overflow-hidden mt-10">
-        <ul class="community-list overflow-x-auto text-left flex gap-4 " ref="communityListRef">
-            <template v-for="dep in 2" :key="dep">
-                <li v-for="item in communityList" :key="item.name + dep"
-                    class="flex-shrink-0 w-[360px] flex flex-col gap-5 bg-white rounded-2xl px-5 py-6"
-                    @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
-                    <div class="flex items-center gap-2">
-                        <img :src="item.imgUrl" alt="user-img" class="w-44px h-44px rounded-full">
-                        <div class="flex flex-col">
-                            <p class="font-archivo font-weight-500 text-[16px]">{{ item.name }}</p>
-                            <p class="font-inter font-weight-400 text-[12px]">{{ item.title }}</p>
-                        </div>
-
-                    </div>
-                    <div class="flex flex-col gap-5">
-                        <p class="font-inter font-weight-400 text-[16px] leading-[1.5]">{{ item.description }}</p>
-                        <div class="font-weight-400 text-[14px] color-[#11A3FD]">
-                            View more >
-                        </div>
-                    </div>
-                </li>
-            </template>
-        </ul>
-    </div>
-    <div class="w-full overflow-hidden mt-5">
-        <ul class="community-list overflow-x-auto text-left flex gap-4 " ref="communityListRef2"
+    <div class="border-1">
+        <div>
+            <h2 class="mt-10 font-archivo font-weight-700 font-bold text-[24px] lg:text-[48px]">Trusted by Community
+            </h2>
+        </div>
+        <!-- <div class="w-full overflow-hidden mt-10">
+        <ul class="community-list overflow-x-auto text-left flex gap-4 " ref="communityListRef"
             @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
             <template v-for="dep in 2" :key="dep">
                 <li v-for="item in communityList" :key="item.name + dep"
-                    class="flex-shrink-0 w-[360px] flex flex-col gap-5  bg-white rounded-2xl px-5 py-6">
+                    class="flex-shrink-0 w-[360px] flex flex-col gap-5 bg-white rounded-2xl px-5 py-6">
                     <div class="flex items-center gap-2">
                         <img :src="item.imgUrl" alt="user-img" class="w-44px h-44px rounded-full">
                         <div class="flex flex-col">
@@ -169,10 +146,52 @@ const handleMouseLeave = () => {
                             View more >
                         </div>
                     </div>
-
                 </li>
             </template>
-        </ul>
+</ul>
+</div> -->
+        <Marquee :reverse="true">
+            <ul class="flex text-left gap-4">
+                <li v-for="item in communityList" :key="item.name"
+                    class="flex-shrink-0 w-[360px] flex flex-col gap-5 bg-white rounded-2xl px-5 py-6 border-1 border-black/10">
+                    <div class="flex items-center gap-2">
+                        <img :src="item.imgUrl" alt="user-img" class="w-44px h-44px rounded-full">
+                        <div class="flex flex-col">
+                            <p class="font-archivo font-weight-500 text-[16px]">{{ item.name }}</p>
+                            <p class="font-inter font-weight-400 text-[12px]">{{ item.title }}</p>
+                        </div>
+
+                    </div>
+                    <div class="flex flex-col gap-5">
+                        <p class="font-inter font-weight-400 text-[16px] leading-[1.5]">{{ item.description }}</p>
+                        <div class="font-weight-400 text-[14px] color-[#11A3FD] cursor-pointer">
+                            View more >
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </Marquee>
+        <Marquee>
+            <ul class="flex text-left gap-4">
+                <li v-for="item in communityList" :key="item.name"
+                    class="flex-shrink-0 w-[360px] flex flex-col gap-5 bg-white rounded-2xl px-5 py-6  border-1 border-black/10">
+                    <div class="flex items-center gap-2">
+                        <img :src="item.imgUrl" alt="user-img" class="w-44px h-44px rounded-full">
+                        <div class="flex flex-col">
+                            <p class="font-archivo font-weight-500 text-[16px]">{{ item.name }}</p>
+                            <p class="font-inter font-weight-400 text-[12px]">{{ item.title }}</p>
+                        </div>
+
+                    </div>
+                    <div class="flex flex-col gap-5">
+                        <p class="font-inter font-weight-400 text-[16px] leading-[1.5]">{{ item.description }}</p>
+                        <div class="font-weight-400 text-[14px] color-[#11A3FD] cursor-pointer">
+                            View more >
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </Marquee>
     </div>
 </template>
 

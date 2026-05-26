@@ -8,6 +8,11 @@ const props = defineProps({
         type: String,
         default: 'english',
     },
+    style: {
+        type: Object,
+        default: () => ({}),
+        required: false,
+    },
 })
 const emit = defineEmits(['update:modelValue','change'])
 const selectCompRef = ref<HTMLElement | null>(null)
@@ -63,12 +68,14 @@ onUnmounted(() => {
             </div>
         </div>
 
-        <div v-if="dropdownShow" class="fixed z-[9999] bg-[#5d5b6b] rounded-md transition-all duration-300" :style="{
+        <div v-if="dropdownShow" class="fixed z-[9999] bg-[#5d5b6b] rounded-md max-h-[200px] overflow-y-auto scrollbar-lang" :style="{
             top: dropdownPosition.top + 'px',
             left: dropdownPosition.left + 'px',
             width: dropdownPosition.width + 'px',
             transform: 'translateY(-100%)',
-        }">
+            ...props.style,
+        }"
+        >
             <ul class="flex flex-col gap-0.5">
                 <li class="py-2 px-3 rounded-md hover:bg-white/10 font-weight-400 font-size-[14px] cursor-pointer"
                 :class="{ 'bg-white/10': selectedLang === option.value }"
@@ -78,3 +85,5 @@ onUnmounted(() => {
         </div>
     </div>
 </template>
+<style scoped lang="scss">
+</style>

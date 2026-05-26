@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useScroll, useMotionValueEvent,motion } from "motion-v"
+import { cn } from "~/utils/cn"
+import BrowserScanLines from "./browser-scan-lines.vue"
 const platforms = ['AliExpress', 'Amazon', 'eBay', 'Facebook', 'Esty', 'Amazon'] as const
 const platforms2 = ['AliExpress2', 'Amazon2', 'eBay2', 'Facebook2', 'Esty2', 'Amazon2'] as const
 
@@ -28,9 +30,21 @@ let marqueeActive = true
 
 let timeId = 0
 const animationShow = ref(true)
-
 /** px / frame（约 60fps 时约 33px/s） */
 const SCROLL_SPEED = 0.55
+
+/** 左/右侧共 5 层扫描线：竖向按 1/6～5/6 均分，倾角居中对称递减 */
+const SCAN_LINE_LAYER_STYLES = [
+    { top: "top-[16.667%]", rotate: "rotate-[2deg]" },
+    { top: "top-[33.333%]", rotate: "rotate-[1deg]" },
+    { top: "top-1/2", rotate: "rotate-0" },
+    { top: "top-[66.667%]", rotate: "-rotate-[1deg]" },
+    { top: "top-[83.333%]", rotate: "-rotate-[2deg]" },
+] as const
+
+function scanLineLayerClass(side: "left" | "right", layer: (typeof SCAN_LINE_LAYER_STYLES)[number]) {
+    return cn("absolute", side === "left" ? "left-0" : "right-0", layer.top, layer.rotate)
+}
 
 function tick() {
     if (!marqueeActive) return
@@ -103,8 +117,29 @@ onUnmounted(() => {
             </div>
 
             <div class="mt-11 relative perspective-wrapper" ref="browserRef">
+                <!-- <ul class="w-full h-full">
+                    <li
+                        v-for="(layer, i) in SCAN_LINE_LAYER_STYLES"
+                        :key="`scan-left-${i}`"
+                        :class="scanLineLayerClass('left', layer)"
+                    >
+                        <BrowserScanLines />
+                    </li>
+                </ul>
+                <ul class="w-full h-full absolute left-0">
+                    <li
+                        v-for="(layer, i) in SCAN_LINE_LAYER_STYLES"
+                        :key="`scan-right-${i}`"
+                        :class="scanLineLayerClass('right', layer)"
+                    >
+                        <BrowserScanLines />
+                    </li>
+                </ul> -->
+                <div>
+                    <BrowserScanLines />
+                </div>
                 <div
-                    class="hidden md:flex justify-center items-center absolute left-1/2 top-[-3px] -translate-x-1/2 -translate-y-1/2  gap-4 font-size-4 rounded-full py-1 px-4 lg:bg-[linear-gradient(90deg,#3B84FA_0%,#7B75F0_50%,#FF846B_100%)]">
+                    class="hidden md:flex justify-center z-1 items-center absolute left-1/2 top-[-3px] -translate-x-1/2 -translate-y-1/2  gap-4 font-size-4 rounded-full py-1 px-4 lg:bg-[linear-gradient(90deg,#3B84FA_0%,#7B75F0_50%,#FF846B_100%)]">
 
                     <p class="text-white whitespace-nowrap">20% OFF First Purchase</p>
                     <p class="text-white whitespace-nowrap">Free Proxy IPs</p>
