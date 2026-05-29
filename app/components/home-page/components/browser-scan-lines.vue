@@ -156,17 +156,17 @@ const variants6 = {
             </motion.ul>
             <motion.ul class="line-container" :style="{ transform: 'rotate(-1deg)' }">
                 <motion.li v-for="n in 3" :key="n" animate="visible" :initial="{ x: '100vw' }" :custom="n"
-                    :variants="variants" class="line-item">
+                    :variants="variants4" class="line-item">
                 </motion.li>
             </motion.ul>
             <motion.ul class="line-container" :style="{ transform: 'rotate(-2deg)' }">
                 <motion.li v-for="n in 3" :key="n" animate="visible" :initial="{ x: '100vw' }" :custom="n"
-                    :variants="variants2" class="line-item">
+                    :variants="variants5" class="line-item">
                 </motion.li>
             </motion.ul>
             <motion.ul class="line-container" :style="{ transform: 'rotate(-4deg)' }">
                 <motion.li v-for="n in 3" :key="n" animate="visible" :initial="{ x: '100vw' }" :custom="n"
-                    :variants="variants3" class="line-item">
+                    :variants="variants6" class="line-item">
                 </motion.li>
             </motion.ul>
         </div>

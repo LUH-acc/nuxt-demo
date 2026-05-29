@@ -83,7 +83,7 @@ const handleMouseLeave = () => {
 
 <template>
   <div
-    class="max-w-[375px] xs:max-w-[640px] text-white md:max-w-[1320px] mx-auto fixed top-0 left-0 right-0 z-100 px-4">
+    class="max-w-[375px] xs:max-w-[640px] h-12 text-white md:max-w-[1320px] mx-auto fixed top-0 left-0 right-0 z-100 px-4">
     <div class="bg-[#0C1A31]/20 backdrop-blur-md rounded-3">
       <div class="relative flex w-full items-center  py-1.5 px-2  mt-3" :class="menuShow ? 'rounded-b-none' : ''">
         <div class="flex items-center gap-2">
@@ -102,10 +102,11 @@ const handleMouseLeave = () => {
             </NavProvide>
           </motion.div>
         </div>
-        <div class="ml-auto">
+        <div class="ml-auto flex items-center">
           <NuxtLink class="py-1.5 px-3 md:hidden hover:bg-white/30 rounded-md" @click="handlemobileMenuHeight">open menu
           </NuxtLink>
-          <NuxtLink class="py-1.5 px-3  hover:bg-white/30 rounded-md" @click="show = !show">Login</NuxtLink>
+          <NuxtLink class="py-1.5 font-weight-500 font-size-[14px] px-5 border-1 border-white/30 rounded-md hidden md:block" @click="show = !show">登录</NuxtLink>
+          <NuxtLink class="py-1.5 font-weight-500 font-size-[14px] px-5 ml-3 bg-primary-blue text-white rounded-md hidden md:block" @click="show = !show">注册</NuxtLink>
         </div>
 
       </div>
